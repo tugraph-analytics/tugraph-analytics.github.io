@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Tugraph-Analytics Website</title>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <hr>
+  <?php
+    // Load the README content
+    $readme = file_get_contents('README.md');
+    // Convert markdown to HTML
+    $html = new Parsedown();
+    echo $html->text($readme);
+  ?>
 </body>
 </html>
