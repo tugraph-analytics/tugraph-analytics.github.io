@@ -2,6 +2,7 @@
 layout: post
 read_time: true
 show_date: true
+show_author: true
 title: "从大数据到图计算-Graph On BigData"
 date: 2023-06-27
 img: posts/20230627/geaflow_arch.png
@@ -10,7 +11,7 @@ category: opinion
 author: 彭志伟
 description: "自2003年Google的三篇大数据领域经典论文GFS、MapReduce和BigTable发表以来，大数据领域取得了长足的发展。尤其是开源大数据领域各种优秀的开源大数据引擎层出不穷，先后出现了Hadoop、Hive、Storm、Spark、Flink以及Presto等多种优秀的开源项目。从应用场景上覆盖了离线计算、流式计算、OLAP查询以及流批一体等多种计算形态，针对大数据的处理技术日益完善和多样化。"
 ---
-
+## author: 彭志伟
 ## 背景
 
 自2003年Google的三篇大数据领域经典论文GFS、MapReduce和BigTable发表以来，大数据领域取得了长足的发展。尤其是开源大数据领域各种优秀的开源大数据引擎层出不穷，先后出现了Hadoop、Hive、Storm、Spark、Flink以及Presto等多种优秀的开源项目。从应用场景上覆盖了离线计算、流式计算、OLAP查询以及流批一体等多种计算形态，针对大数据的处理技术日益完善和多样化。

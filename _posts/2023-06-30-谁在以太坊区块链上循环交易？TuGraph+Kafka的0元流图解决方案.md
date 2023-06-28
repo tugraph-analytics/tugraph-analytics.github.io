@@ -10,7 +10,7 @@ category: opinion
 author: 林力韬
 description: "随着大数据和人工智能等技术的发展，即便人们都知道数据的价值日益凸显，却无法凭借一己之力获取和分析如此大规模的数据。"
 ---
-
+## author: 林力韬 co-author: ChatGPT3.5
 ## 内容马上来，敬请期待...
 
 
