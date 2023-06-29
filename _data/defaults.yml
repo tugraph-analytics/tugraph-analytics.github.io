@@ -1,0 +1,4 @@
+home:
+  heading: "Welcome to TuGraph-Analytics Blog"
+  subheading: "All the interesting TuGraph-Analytics blogs here"
+  banner: "./banners/home.jpeg"
