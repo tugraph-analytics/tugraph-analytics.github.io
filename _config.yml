@@ -65,7 +65,7 @@ yat:
 # content_width: "920px"
 
 # Google analytics - GA4
-# google_analytics: [Measurement ID]
+google_analytics: "G-65BN4GZJK2"
 # enableDNT: "false"
 
 # If you want to generate website sitemap, you can set true
