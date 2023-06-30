@@ -141,11 +141,11 @@ RETURN vid, distance
 
 GeaFlow(品牌名TuGraph-Analytics) 已正式开源，欢迎大家关注！！！
 
-欢迎给我们 Star 哦:star:!
+欢迎给我们 Star 哦!
 
-Welcome to give us a Star:star:!
+Welcome to give us a Star!
 
-:point_right:[https://github.com/TuGraph-family/tugraph-analytics](https://github.com/TuGraph-family/tugraph-analytics)
+GitHub:[https://github.com/TuGraph-family/tugraph-analytics](https://github.com/TuGraph-family/tugraph-analytics)
 
 ## 微信群
 ![image](../../../../assets/images/wechat.png)
