@@ -5,7 +5,6 @@ show_date: true
 show_author: true
 title: "从大数据到图计算-Graph On BigData"
 date: 2023-06-27
-img: posts/20230627/geaflow_arch.png
 tags: [大数据, 图计算, TuGraph, TuGraph-Analytics, 开源, github]
 category: opinion
 author: 彭志伟

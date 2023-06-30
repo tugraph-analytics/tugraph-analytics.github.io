@@ -4,7 +4,6 @@ read_time: true
 show_date: true
 title: "谁在以太坊区块链上循环交易？TuGraph+Kafka的0元流图解决方案"
 date: 2023-06-16
-img: posts/20230630/kafka_cycle2.png
 tags: [图计算, 以太坊, 循环交易, TuGraph-Analytics, 环路检测, github, Kafka]
 category: opinion
 author: 林力韬
