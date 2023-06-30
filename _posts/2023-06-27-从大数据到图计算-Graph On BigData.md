@@ -11,7 +11,7 @@ category: opinion
 author: 彭志伟
 description: "自2003年Google的三篇大数据领域经典论文GFS、MapReduce和BigTable发表以来，大数据领域取得了长足的发展。尤其是开源大数据领域各种优秀的开源大数据引擎层出不穷，先后出现了Hadoop、Hive、Storm、Spark、Flink以及Presto等多种优秀的开源项目。从应用场景上覆盖了离线计算、流式计算、OLAP查询以及流批一体等多种计算形态，针对大数据的处理技术日益完善和多样化。"
 ---
-## author: 彭志伟
+author: 彭志伟
 
 ## 背景
 
@@ -21,12 +21,9 @@ description: "自2003年Google的三篇大数据领域经典论文GFS、MapReduc
 
 图模型作为一种以点和边作为基本单元定义的数据模型天然可以描述关联关系。在图模型里面以点代表实体，以边代表关系。比如在人际关系图里面，每一个人可以用一个点来表示，人和人之间的关系通过边来表示，人与人之间可以存在各种各样的复杂关系，这些关系都可以通过不同的边来表示。基于图模型一方面可以很好的描述复杂关系以及复杂关系的运算，另外一方面图的存储模型天然存储点边关联关系，在计算层面可以获得更好的计算性能。
 
-<center>
-<img style="float: left;margin-right: 1em;" src='../../../../assets/images/posts/20230627/zhuanzhang.png' 
-width="310" height="300">
-</center>
+![image](../../../../assets/images/posts/20230627/zhuanzhang.png)
 
-# 实时图计算引擎-TuGraph-Analytics
+## 实时图计算引擎-TuGraph-Analytics
 
 在蚂蚁金融风控场景下存在大量复杂关系的处理，比如反套现系统里面需要查找多跳的转账关系来检查是否存在环路，判断用户是否存在套现行为；日志归因分析场景下需要分析用户的行为路径等。这些场景一方面关联关系复杂，另外一方面计算时效性要求高，业务往往需要分钟级甚至秒级延迟; 同时图数据规模大，可以达到千亿甚至万亿点边规模。传统的大数据引擎无法满足以上需求，比如Spark GraphX具备大规模图数据处理的能力，但主要偏离线计算场景，无法满足时效性要求；Flink具备强大的实时计算能力，但是很难处理多跳的实时Join关联计算，尤其是数据规模大的场景。
 
@@ -36,10 +33,7 @@ width="310" height="300">
 
 GeaFlow整体架构从上往下包含以下几层：
 
-<center>
-<img style="float: left;margin-right: 1em;" src='../../../../assets/images/posts/20230627/geaflow_arch.png' 
-width="1310" height="300">
-</center>
+![image](../../../../assets/images/posts/20230627/geaflow_arch.png)
 
 * GeaFlow DSL GeaFlow对用户提供图表融合分析语言，采用SQL + ISO/GQL方式.用户可以通过类似SQL编程的方式编写实时图计算任务.
 * GraphView API GeaFlow以GraphView为核心定义的一套图计算的编程接口,包含图构建、图计算以及Stream API接口.
