@@ -188,7 +188,7 @@ GeaFlow(品牌名TuGraph-Analytics) 已正式开源，欢迎大家关注！！�
 
 Welcome to give us a Star!
 
-GitHub:[https://github.com/TuGraph-family/tugraph-analytics](https://github.com/TuGraph-family/tugraph-analytics)
+GitHub👉[https://github.com/TuGraph-family/tugraph-analytics](https://github.com/TuGraph-family/tugraph-analytics)
 
 ### 微信群
 ![image](../../../../assets/images/wechat.png)
