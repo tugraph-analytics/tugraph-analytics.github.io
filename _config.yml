@@ -24,9 +24,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: TuGraph-Analytics Website
+title: GeaFlow Website
 email: 1229394985@qq.com
-author: tugraph-analytics
+author: GeaFlow
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -43,7 +43,7 @@ author: tugraph-analytics
 copyright: "TuGraph-Analytics (cleft) 2023-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  TuGraph-analytics is a distribute streaming graph computing engine.
+  GeaFlow(TuGraph-analytics) is a distribute streaming graph computing engine.
   Our github https://github.com/TuGraph-family/tugraph-analytics
 
 baseurl: "" # the subpath of your site, e.g. /blog
