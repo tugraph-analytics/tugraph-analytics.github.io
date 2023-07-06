@@ -2,9 +2,9 @@
 layout: post
 read_time: true
 show_date: true
-title: "谁在以太坊区块链上循环交易？TuGraph+Kafka的0元流图解决方案"
+title: "谁在以太坊区块链上循环交易？GeaFlow+Kafka的0元流图解决方案"
 date: 2023-06-16
-tags: [图计算, 以太坊, 循环交易, TuGraph-Analytics, 环路检测, github, Kafka]
+tags: [图计算, 以太坊, 循环交易, GeaFlow, 环路检测, github, Kafka]
 category: opinion
 author: 林力韬
 description: "随着大数据和人工智能等技术的发展，即便人们都知道数据的价值日益凸显，却无法凭借一己之力获取和分析如此大规模的数据。"
@@ -21,7 +21,7 @@ co-author: ChatGPT 3.5
 
 ![image](../../../../assets/images/posts/20230630/kafka_tugraph.png)
 
-现如今，免费的，蚂蚁集团图计算团队开源的超大规模流图处理系统——TuGraph-Analytics正成为一款专注于图计算领域的开源数据处理工具。我们从一个简单的问题开始，让你体会TuGraph-Analytics的强大之处。
+现如今，免费的，蚂蚁集团图计算团队开源的超大规模流图处理系统——GeaFlow正成为一款专注于图计算领域的开源数据处理工具。我们从一个简单的问题开始，让你体会GeaFlow的强大之处。
 
 ## “谁在进行循环交易？”
 
@@ -51,7 +51,7 @@ GPT：无法通过一句话回答，需要进行数据分析。
 
 可见，虽然GPT等人工智能在自然语言处理和图像识别等方面已经取得了显著进展，但在数据洞察方面仍然存在挑战。 因为数据洞察往往需要结合具体的业务背景和领域知识，而这些人类经验和智慧难以完全被机器模拟和替代。此外，在数据清洗、数据预处理、特征提取和建模等关键步骤上，仍需要人类专家进行干预和优化。
 
-今天，我们使用开源的TuGraph-Analytics与流式消息系统Kafka，不仅能够很好回答谁在以太坊的区块链上进行循环交易，而且能够搭建秒级实时的金融级解决方案，客官且看----
+今天，我们使用开源的GeaFlow与流式消息系统Kafka，不仅能够很好回答谁在以太坊的区块链上进行循环交易，而且能够搭建秒级实时的金融级解决方案，客官且看----
 
 
 ## 何为循环交易？
@@ -79,13 +79,13 @@ GPT：无法通过一句话回答，需要进行数据分析。
 
 这就是为什么强如GPT也无法一句话回答这个问题的原因。
 
-## TuGraph-Analytics
+## GeaFlow
 
 那么真的能够在每笔交易发生时实时地检测循环交易的产生吗？
 
-实际上，使用专业的图计算系统TuGraph-Analytics，这个问题只需要几十行代码即可解决，还能够迅速结合Kafka搭建起交易听单->交易网络生成->实时循环交易检出->给下游发送消息完整的金融级实时解决方案。更关键的是，这一切都是免费的~ 感谢开源！
+实际上，使用专业的图计算系统GeaFlow，这个问题只需要几十行代码即可解决，还能够迅速结合Kafka搭建起交易听单->交易网络生成->实时循环交易检出->给下游发送消息完整的金融级实时解决方案。更关键的是，这一切都是免费的~ 感谢开源！
 
-我们在TuGraph-Analytics新建一个图计算作业，只需大约40行代码，即可完成整个端到端流程。
+我们在GeaFlow新建一个图计算作业，只需大约40行代码，即可完成整个端到端流程。
 
 ![image](../../../../assets/images/posts/20230630/kafka_004.png)
 
@@ -155,9 +155,9 @@ RETURN concat(CAST(v1.id as VARCHAR), '->', CAST(v2.id as VARCHAR),
 ![image](../../../../assets/images/posts/20230630/kafka_006.png)
 
 
-以上便是开源图计算平台TuGraph Analytics结合Kafka，快速搭建的以太坊循环交易检出解决方案。 虽然这只是一个小小的demo，但实机演示中强大的图计算语法和系统性能可见一斑，大大较低了我们普通人搭建图计算应用的难度和成本。
+以上便是开源图计算平台GeaFlow结合Kafka，快速搭建的以太坊循环交易检出解决方案。 虽然这只是一个小小的demo，但实机演示中强大的图计算语法和系统性能可见一斑，大大较低了我们普通人搭建图计算应用的难度和成本。
 
-说多不如现在开始行动，TuGraph Analytics是你不容错过的利器。现在就赶快访问[https://github.com/TuGraph-family/tugraph-analytics](https://github.com/TuGraph-family/tugraph-analytics)，亲自体验TuGraph Analytics的魅力吧！此外，我们欢迎各位参与到开源贡献中来，为社区贡献自己的智慧和代码，共同促进国产图计算系统的发展。
+说多不如现在开始行动，GeaFlow是你不容错过的利器。现在就赶快访问[https://github.com/TuGraph-family/tugraph-analytics](https://github.com/TuGraph-family/tugraph-analytics)，亲自体验GeaFlow的魅力吧！此外，我们欢迎各位参与到开源贡献中来，为社区贡献自己的智慧和代码，共同促进国产图计算系统的发展。
 
 ## 参考文献
 P. Zheng, Z. Zheng, J. Wu, and H.-N. Dai, “XBlock-ETH: Extracting and exploring blockchain data from Ethereum,” IEEE Open J. Comput. Soc., vol. 1, pp. 95–106, May 2020, doi: 10.1109/OJCS.2020.2990458.

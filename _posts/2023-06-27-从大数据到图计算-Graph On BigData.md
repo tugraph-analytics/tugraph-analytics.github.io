@@ -5,7 +5,7 @@ show_date: true
 show_author: true
 title: "从大数据到图计算-Graph On BigData"
 date: 2023-06-27
-tags: [大数据, 图计算, TuGraph, TuGraph-Analytics, 开源, github]
+tags: [大数据, 图计算, TuGraph, GeaFlow, 开源, github]
 category: opinion
 author: 彭志伟
 description: "自2003年Google的三篇大数据领域经典论文GFS、MapReduce和BigTable发表以来，大数据领域取得了长足的发展。尤其是开源大数据领域各种优秀的开源大数据引擎层出不穷，先后出现了Hadoop、Hive、Storm、Spark、Flink以及Presto等多种优秀的开源项目。从应用场景上覆盖了离线计算、流式计算、OLAP查询以及流批一体等多种计算形态，针对大数据的处理技术日益完善和多样化。"
@@ -22,7 +22,7 @@ author: 彭志伟
 
 ![image](../../../../assets/images/posts/20230627/zhuanzhang.png)
 
-## 实时图计算引擎-TuGraph-Analytics
+## 实时图计算引擎-GeaFlow
 
 在蚂蚁金融风控场景下存在大量复杂关系的处理，比如反套现系统里面需要查找多跳的转账关系来检查是否存在环路，判断用户是否存在套现行为；日志归因分析场景下需要分析用户的行为路径等。这些场景一方面关联关系复杂，另外一方面计算时效性要求高，业务往往需要分钟级甚至秒级延迟; 同时图数据规模大，可以达到千亿甚至万亿点边规模。传统的大数据引擎无法满足以上需求，比如Spark GraphX具备大规模图数据处理的能力，但主要偏离线计算场景，无法满足时效性要求；Flink具备强大的实时计算能力，但是很难处理多跳的实时Join关联计算，尤其是数据规模大的场景。
 
@@ -41,7 +41,7 @@ GeaFlow整体架构从上往下包含以下几层：
 * K8S Deployment GeaFlow支持K8S的方式进行部署运行.
 * GeaFlow Console GeaFlow的管控平台，包含作业管理、元数据管理等功能.
 
-## TuGraph-Analytics和大数据生态结合
+## GeaFlow和大数据生态结合
 图计算系统不是一个孤立的系统，必须和现有大数据生态结合，才能更好的解决大数据领域的问题。GeaFlow通过Connector插件的形式支持了和主流大数据生态的打通，比如Kafka/Hive/HDFS等。通过Connector插件，可以很容易将大数据生态的数据接入的到图计算系统中来。下面我们将以Hive为例介绍如何将数仓里的数据导入到GeaFlow图存储中，然后跑通一个图算法。
 
 ### 图定义

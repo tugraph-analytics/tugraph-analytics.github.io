@@ -2,9 +2,9 @@
 layout: post
 read_time: true
 show_date: true
-title: "Kubernetes云原生实战：分布式TuGraph-Analytics实现图研发，构建第一个商业智能应用"
+title: "Kubernetes云原生实战：分布式GeaFlow实现图研发，构建第一个商业智能应用"
 date: 2023-07-04
-tags: [K8S, 云原生, 图研发, 商业智能, TuGraph-Analytics, BI, 数据分析]
+tags: [K8S, 云原生, 图研发, 商业智能, GeaFlow, BI, 数据分析]
 category: opinion
 author: 林力韬
 description: "Kubernetes在云原生应用中扮演着至关重要的角色，为商业智能（BI）强大赋能。不同于传统的BI，容器化部署在集群中可以获得更高的可靠性、弹性和灵活性。"
@@ -24,7 +24,7 @@ MATCH (:TagClass where name = 'Comedian')
       <-[:hasType]-(:Tag)
       <-[:hasTag]-(msg:Post|Comment)
 ```
-这里使用了开源图研发引擎TuGraph-Analytics支持的GQL语言描述，可以简单直观地描述商业关系。 后文将介绍基于分布式TuGraph-Analytics实现图研发，都采用类似的描述。
+这里使用了开源图研发引擎GeaFlow支持的GQL语言描述，可以简单直观地描述商业关系。 后文将介绍基于分布式GeaFlow实现图研发，都采用类似的描述。
 
 一段时间的研究后，分析师开始关注发布者的朋友都有哪些：
 ```sql
@@ -40,17 +40,17 @@ MATCH (:Tag)
 
 图研发平台可以提供高效的图分析能力，使得分析师可以更快地探索数据，并且可以轻松地构建和优化查询。 使用图研发平台，可以将复杂的数据模型转化为可视化的图形表示，使得即使是新手分析师也可以直观地理解数据之间的关系。 此外，云原生技术保证平台的可扩展性和弹性，使得一行代码可以瞬间放大几十万倍，支撑起大规模数据的快速分析。
 
-接下来我们带着这个问题出发，以支持云原生的分布式图研发平台TuGraph-Analytics为例，快速搭建起你的第一个商业智能应用。
+接下来我们带着这个问题出发，以支持云原生的分布式图研发平台GeaFlow为例，快速搭建起你的第一个商业智能应用。
 
 ## 部署环境
 
-部署TuGraph-Analytics需要一个docker+K8S的云原生环境，因此需要提前安装docker和K8S。 TuGraph-Analytics能够将业务数据转化为图，一旦将数据导入一张图中，后续就可以持续支持各种分析需求。 业务数据支持各类来源，包括数据库、Hive、Kafka等等。
+部署GeaFlow需要一个docker+K8S的云原生环境，因此需要提前安装docker和K8S。 GeaFlow能够将业务数据转化为图，一旦将数据导入一张图中，后续就可以持续支持各种分析需求。 业务数据支持各类来源，包括数据库、Hive、Kafka等等。
 
-TuGraph-Analytics会在镜像中自动拉起MySQL、Redis、RocksDB、InfluxDB等必须组件。
+GeaFlow会在镜像中自动拉起MySQL、Redis、RocksDB、InfluxDB等必须组件。
 
 ### 部署K8S
 
-TuGraph-Analytics依赖K8S运行图研发作业，安装K8S后需要取得API地址。
+GeaFlow依赖K8S运行图研发作业，安装K8S后需要取得API地址。
 
 K8S API Server默认监听6443端口，可以在K8S集群的任一节点上使用以下命令查看集群信息：
 ```sh
@@ -69,12 +69,12 @@ Kubernetes master is running at https://172.25.8.152:6443
 
 这些字段的值通常被编码为Base64格式并存储在配置文件中，以保证安全性。
 
-TuGraph-Analytics需要取得这三个参数以启动K8S客户端，提交作业到集群。
+GeaFlow需要取得这三个参数以启动K8S客户端，提交作业到集群。
 
 ### 部署DFS
-为了存储TB级别的超大规模图，可能需要搭建DFS，小规模数据则不必要部署Hadoop，TuGraph-Analytics可以将图数据保存在本地磁盘中。
+为了存储TB级别的超大规模图，可能需要搭建DFS，小规模数据则不必要部署Hadoop，GeaFlow可以将图数据保存在本地磁盘中。
 
-部署Hadoop后，需要取得文件系统地址，TuGraph-Analytics需要连接Hadoop写入图数据和系统运行状态数据。 打开终端并登录到Hadoop集群中的任何一个节点，运行以下命令：
+部署Hadoop后，需要取得文件系统地址，GeaFlow需要连接Hadoop写入图数据和系统运行状态数据。 打开终端并登录到Hadoop集群中的任何一个节点，运行以下命令：
 
 ```sh
 hdfs getconf -namenodes
@@ -89,36 +89,36 @@ hadoop org.apache.hadoop.conf.Configuration | grep 'fs.defaultFS'
 这将显示fs.defaultFS的值，即Hadoop集群的默认文件系统URI。
 
 ### 部署外部数据源
-TuGraph-Analytics目前支持DFS、Kafka、Hive等数据源，未来将支持JDBC、Pulsar等数据源。
+GeaFlow目前支持DFS、Kafka、Hive等数据源，未来将支持JDBC、Pulsar等数据源。
 
 用户可以实现自定义的数据源，参考[自定义Connector文档](https://tugraph-analytics.readthedocs.io/en/latest/docs-cn/application-development/dsl/connector/udc/)。其中也包含现有数据源的使用方法。
 
 如果需要更多数据源的支持，可以通过GitHub项目地址提出ISSUE，或者加入微信群联系我们。
 
-## 安装TuGraph-Analytics
+## 安装GeaFlow
 
-TuGraph-Analytics提供一个分布式图计算引擎GeaFlow，同时提供一个完整的图研发管控平台Console。 用户可在系统内完成图数据创建、研发、运维等工作。 管控平台Console可以基于Docker独立启动，配置好集群和存储系统后，图研发作业可以方便地提交到K8S集群运行。
+GeaFlow提供一个分布式图计算引擎GeaFlow，同时提供一个完整的图研发管控平台Console。 用户可在系统内完成图数据创建、研发、运维等工作。 管控平台Console可以基于Docker独立启动，配置好集群和存储系统后，图研发作业可以方便地提交到K8S集群运行。
 
-参考[TuGraph-Analytics安装部署文档](https://tugraph-analytics.readthedocs.io/en/latest/docs-cn/deploy/install_guide/)安装TuGraph-Analytics。
+参考[GeaFlow安装部署文档](https://tugraph-analytics.readthedocs.io/en/latest/docs-cn/deploy/install_guide/)安装GeaFlow。
 
-在集群配置步骤中，配置K8S集群到TuGraph-Analytics，填入K8S服务地址与前文提到的证书信息。
+在集群配置步骤中，配置K8S集群到GeaFlow，填入K8S服务地址与前文提到的证书信息。
 
 ![image](../../../../assets/images/posts/20230715/anzhuang1.png)
 
 
 安装时会提示**当前为单机部署模式**，这表示Console平台使用默认单机部署。 图研发作业会被提交到配置的K8S集群，Console平台提供作业编辑和运维能力，不受影响。
 
-在数据存储配置步骤中，配置导入TuGraph-Analytics的图数据存储位置。
+在数据存储配置步骤中，配置导入GeaFlow的图数据存储位置。
 
 ![image](../../../../assets/images/posts/20230715/anzhuang3.png)
 
 数据量较小可以配置为LOCAL模式，无需修改。 若数据量比较大，配置为DFS地址，Root路径为存储数据在DFS中的根目录。
 
-最后点击一键安装完成TuGraph-Analytics安装部署。
+最后点击一键安装完成GeaFlow安装部署。
 
 ## 构图
 ### 一次构图
-TuGraph-Analytics可以支持TB级别的超大规模图，使得用户构图完成后，轻松应对业务演进。 超大规模数据的存储需要DFS的支持，数据来源可以是数据库、Hive、Kafka等等任何外部系统，通过对应的Connector读写数据。
+GeaFlow可以支持TB级别的超大规模图，使得用户构图完成后，轻松应对业务演进。 超大规模数据的存储需要DFS的支持，数据来源可以是数据库、Hive、Kafka等等任何外部系统，通过对应的Connector读写数据。
 
 举例来说，我们创建实现商业智能应用的第一张图，命名为bi。 创建图后， 将外部数据源的业务数据导入图中，使用对应的Connector完成数据导入。
 
@@ -164,7 +164,7 @@ INSERT INTO bi.knows SELECT srcId, targetId, va FROM tbl_edge_va WHERE type = 'k
 ## 图研发实现商业智能
 ### 数据调查
 
-分析商业数据的第一步是明确问题，并通过数据调查开始针对性地进行数据分析，避免浪费时间和资源在无用的分析上。 我们已经利用TuGraph-Analytics将数据导入图bi中，可以通过运行图查询作业快速地得出结论和洞察。
+分析商业数据的第一步是明确问题，并通过数据调查开始针对性地进行数据分析，避免浪费时间和资源在无用的分析上。 我们已经利用GeaFlow将数据导入图bi中，可以通过运行图查询作业快速地得出结论和洞察。
 
 以如下查询为例，它帮助我们了解用户关注的tag都有哪些，结果被写入本地或DFS的interest_tag文件夹中。
 
@@ -186,7 +186,7 @@ ORDER BY personId, tagId LIMIT 100
 ;
 ```
 
-其核心查询是 **MATCH (person:Person)-[:hasInterest]->(tag:Tag)**。 这里**()**表示查询图中的点，**[]**表示查询图中的边。 完整的含义是"用户感兴趣的标签"，TuGraph-Analytics采用类似ISO-GQL的模式表达，可以方便自然地描述关系。
+其核心查询是 **MATCH (person:Person)-[:hasInterest]->(tag:Tag)**。 这里**()**表示查询图中的点，**[]**表示查询图中的边。 完整的含义是"用户感兴趣的标签"，GeaFlow采用类似ISO-GQL的模式表达，可以方便自然地描述关系。
 
 通过管控平台Console，分析人员可以提交一系列研究作业。 这些图查询作业会通过GeaFlow引擎自动提交到K8S集群中分布式地运行，大大太高了数据分析的能力和效率。
 
@@ -266,18 +266,18 @@ ORDER BY personCentralityScore + friendScore DESC, personId LIMIT 100
 
 这个查询计算了一段时间内，**1020002**这个标签相关的用户一度中介中心性分数，把个人的中心性分数与中介中心性分数相加，降序排列后输出前100条记录。
 
-至此，我们模拟进行了一次图研发过程，得到了一种可以利用的标签中心性计算方法。 整个过程都在TuGraph-Analytics的管控平台Console中完成，分析人员无需关注云上的作业运行细节。
+至此，我们模拟进行了一次图研发过程，得到了一种可以利用的标签中心性计算方法。 整个过程都在GeaFlow的管控平台Console中完成，分析人员无需关注云上的作业运行细节。
 
 ### 构建应用
 
 如果我们希望长期利用图研发得到的计算方法，则可以将其构建为长期运行的图计算应用。
 
-通过接入数据源进行流式图查询，TuGraph-Analytics将在图每次更新或外部数据触发时，执行一次中介中心性分数计算。 更新的结果将被输出到外部系统，方便分发给下游。
+通过接入数据源进行流式图查询，GeaFlow将在图每次更新或外部数据触发时，执行一次中介中心性分数计算。 更新的结果将被输出到外部系统，方便分发给下游。
 
 搭建方法可以参考"[谁在以太坊区块链上循环交易？TuGraph+Kafka的0元流图解决方案](../../06/16/谁在以太坊区块链上循环交易-TuGraph+Kafka的0元流图解决方案.html)"这篇博文，这里不再赘述。
 
 ## 总结
-本文介绍了TuGraph-Analytics如何在云原生的K8S环境中安装部署，并模拟了一次商业智能研究过程。 全程采用TuGraph-Analytics自有的管控平台Console提交作业，展现了系统强大的表达和计算能力。
+本文介绍了GeaFlow如何在云原生的K8S环境中安装部署，并模拟了一次商业智能研究过程。 全程采用GeaFlow自有的管控平台Console提交作业，展现了系统强大的表达和计算能力。
 
 GeaFlow(品牌名TuGraph-Analytics) 已正式开源，欢迎大家关注！！！
 
