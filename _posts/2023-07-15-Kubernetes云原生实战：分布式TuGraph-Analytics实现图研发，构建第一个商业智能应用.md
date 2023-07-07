@@ -159,6 +159,7 @@ Create Table If Not Exists tbl_edge_va (srcId bigint, targetId bigint, type varc
 WITH ( type='file', geaflow.dsl.file.path='/tmp/data/bi_edge_with_value');
 
 INSERT INTO bi.knows SELECT srcId, targetId, va FROM tbl_edge_va WHERE type = 'knows';
+
 ```
 
 ## 图研发实现商业智能
