@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 show_author: true
-title: "GitHub上有哪些好项目？GeaFlow图计算快速上手之SSSP算法"
+title: "GitHub上有哪些好项目？TuGraph-Analytics图计算快速上手之SSSP算法"
 date: 2023-07-21
 tags: [蚂蚁集团, 图计算, 单源最短路径, GeaFlow, 开源, github]
 category: news

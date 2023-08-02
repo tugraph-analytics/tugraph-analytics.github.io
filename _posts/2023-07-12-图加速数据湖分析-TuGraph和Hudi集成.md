@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 show_author: true
-title: "图加速数据湖分析-GeaFlow和Hudi集成"
+title: "图加速数据湖分析-TuGraph和Hudi集成"
 date: 2023-07-12
 tags: [Hudi, 图计算, 数据湖, GeaFlow, 开源, github]
 category: news

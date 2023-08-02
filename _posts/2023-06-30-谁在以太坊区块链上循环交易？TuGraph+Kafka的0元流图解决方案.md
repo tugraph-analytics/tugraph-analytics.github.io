@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "谁在以太坊区块链上循环交易？GeaFlow+Kafka的0元流图解决方案"
+title: "谁在以太坊区块链上循环交易？TuGraph+Kafka的0元流图解决方案"
 date: 2023-06-16
 tags: [图计算, 以太坊, 循环交易, GeaFlow, 环路检测, github, Kafka]
 category: opinion

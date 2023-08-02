@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: "Kubernetes云原生实战：分布式GeaFlow实现图研发，构建第一个商业智能应用"
+title: "Kubernetes云原生实战：分布式TuGraph-Analytics实现图研发，构建第一个商业智能应用"
 date: 2023-07-04
 tags: [K8S, 云原生, 图研发, 商业智能, GeaFlow, BI, 数据分析]
 category: opinion
