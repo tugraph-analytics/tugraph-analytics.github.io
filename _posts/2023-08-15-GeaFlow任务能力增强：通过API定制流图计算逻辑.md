@@ -11,7 +11,7 @@ author: TuGraph
 description: "GeaFlow API是对高阶用户提供的开发接口，用户可以直接通过编写java代码来编写计算作业，相比于DSL，API的方式开发更加灵活，也能实现更丰富的功能和更复杂的计算逻辑。"
 ---
 
-# GeaFlow API介绍
+## GeaFlow API介绍
 GeaFlow API是对高阶用户提供的开发接口，用户可以直接通过编写java代码来编写计算作业，相比于DSL，API的方式开发更加灵活，也能实现更丰富的功能和更复杂的计算逻辑。
 在GeaFlow中，API支持Graph API和Stream API两种类型：
 
@@ -27,7 +27,9 @@ GeaFlow API是对高阶用户提供的开发接口，用户可以直接通过编
   - Stream API：流计算API，GeaFlow中StreamView是动态流的数据抽象，基于StreamView之上，可以进行流计算。
 
 更多API的介绍可参考 [https://github.com/TuGraph-family/tugraph-analytics/blob/master/docs/docs-cn/application-development/api/overview.md](https://github.com/TuGraph-family/tugraph-analytics/blob/master/docs/docs-cn/application-development/api/overview.md)
-# PageRank算法示例
+
+## PageRank算法示例
+
 本例子是从文件中读取点边进行构图，执行pageRank算法后，将每个点的pageRank值进行打印。
 其中，用户需要实现AbstractVcFunc，在compute方法中进行每一轮迭代的计算逻辑。
 在本例子中，只计算了两轮迭代的结果。在第一轮中，每个点都会向邻居点发送当前点的value值，而在第二轮中，每个点收到邻居点发送的消息，将其value值进行累加，并更新为自己的value值，即为最后的PageRank值。
@@ -144,9 +146,11 @@ public class PageRank {
 }
 
 ```
-# 提交API作业
+## 提交API作业
+
 (以容器模式，PageRank算法示例)
-## 算法打包
+
+### 算法打包
 在新的项目中新建一个PageRank的demo，pom中引入geaflow依赖
 ```java
 <dependency>
@@ -230,12 +234,12 @@ maven打包，在target目录获取算法的jar包
 ```powershell
 mvn clean install
 ```
-## 新增HLA图任务
+### 新增HLA图任务
 在GeaFlow Console中新增图任务，任务类型选择“HLA”， 并上传jar包（或者选择已存在的jar包），其中**entryClass为算法主函数所在的类**。 点击“提交”，创建任务。
 
 ![image](../../../../assets/images/posts/20230815/002.png)
 
-##  提交作业
+###  提交作业
 
 ![image](../../../../assets/images/posts/20230815/003.png)
 
@@ -243,7 +247,7 @@ mvn clean install
 
 ![image](../../../../assets/images/posts/20230815/004.png)
 
-## 查看运行结果
+### 查看运行结果
 进入容器 /tmp/logs/task/ 目录下，查看对应作业的日志，可看到日志中打印了最终计算得到的每个点的pageRank值。
 ```abap
 2023-08-01 16:51:38 INFO  PageRank:107 - result ValueVertex(vertexId:0, value:1.5718675107490019)
