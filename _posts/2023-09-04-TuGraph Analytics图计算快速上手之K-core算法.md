@@ -4,7 +4,7 @@ read_time: true
 show_date: true
 show_author: true
 title: "TuGraph Analytics图计算快速上手之K-core算法"
-date: 2023-08-21
+date: 2023-09-04
 tags: [图计算, 算法, K-core, TuGraph-Analytics, 开源, GQL]
 category: opinion
 author: 郑光杰
