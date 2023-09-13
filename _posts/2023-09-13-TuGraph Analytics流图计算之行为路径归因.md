@@ -5,7 +5,7 @@ show_date: true
 show_author: true
 title: "TuGraph Analytics流图计算之行为路径归因"
 date: 2023-09-13
-tags: [图计算, 算法, K-core, TuGraph-Analytics, 开源, GQL]
+tags: [图计算, 归因, 路径, TuGraph-Analytics, 流图]
 category: opinion
 author: 李洁峰
 description: "TuGraph Analytics流图计算之行为路径归因"
