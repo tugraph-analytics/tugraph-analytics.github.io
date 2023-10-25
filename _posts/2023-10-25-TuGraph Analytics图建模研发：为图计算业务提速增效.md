@@ -61,9 +61,6 @@ GeaflowJob为所有任务类型的父类，其中的structs、graphs、functions
 在研发管理中新增边定义, 每条边需要有源点id和目标点id字段，如下例子中新增了2条边：knows和creates。
 ![](../../../../assets/images/posts/20231025/tu4.png)
 
-
-![](../../../../assets/images/posts/20231025/tu5.png)
-
 ### 创建图
 在研发管理中新增图定义, 图可以关联之前定义的点和边，console中通过选择框的方式进行关联。如下例子中，创建了名为dy_modern的图，其包含了person和software点、created和knows边。同时，可以为图配置拓扑约束，限制此图上边的源点目标点的绑定关系，例如create边只能是person->software, know边只能是person->person（Endpoint具体作用将在后续文章中介绍）。
 ![](../../../../assets/images/posts/20231025/tu6.png)
