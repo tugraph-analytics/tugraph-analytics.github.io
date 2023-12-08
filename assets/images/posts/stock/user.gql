@@ -1,0 +1,10 @@
+CREATE TABLE tbl_result (
+  line varchar
+) WITH (
+	type='file',
+	geaflow.dsl.file.path='/tmp'
+);
+
+
+insert into tbl_result
+select 'test';
